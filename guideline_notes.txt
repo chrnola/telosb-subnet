@@ -1,0 +1,26 @@
+mote numbers are 61, 62, 63
+SUBNETID is 16
+
+DEFAULT_FREQ_CHANNEL 26
+
+
+turn off blue LED
+receive Beacon -> turn on blue LED
+TargetMsg sent every TARGETPERIOD to TOS_BCAST_ADDR over DEFAULT_FREQ_CHANNEL
+listen on private channel and broadcast
+communicate RSSI to determine Near Node (61 always Near Node if tie)
+Near Node -> red LED
+Far Node -> green LED
+near/far may change over time
+
+Near Node:
+communicate nodeID to Base Station on DEFAULT_FREQ_CHANNEL via ReportMsg
+Near Node changes -> ReportMsg
+Base Station REQUEST -> ReportMsg
+
+ReportMsg: nodeID, timeStamp
+
+BeaconMsg sent out every BEACONPERIOD over DEFAULT_FREQ_CHANNEL using TOS_BCAST_ADDR
+BeaconMsg: clock, subnetID
+
+not hear BeaconMsg for five BEACONPERIOD -> turn off blue LED
