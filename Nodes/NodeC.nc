@@ -68,7 +68,7 @@ implementation {
   	event message_t* Receive.receive(message_t* msg, void* payload, uint8_t len) {
     	if (len == sizeof(NodeMsg)) {
       		NodeMsg* ndpkt = (NodeMsg*)payload;
-      		if(ndpkt->rssi > currRssi) {
+      		if(ndpkt->rssi < currRssi) {
       			call Leds.led0Off();
       			call Leds.led1On();
       			isNear = FALSE;
